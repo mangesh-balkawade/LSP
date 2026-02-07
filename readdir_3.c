@@ -1,34 +1,32 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <sys/stat.h>
-#include <dirent.h>
-#include <sys/types.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<fcntl.h>
+#include<string.h>
+#include<errno.h>
+#include<sys/stat.h>
+#include<dirent.h>
+#include<sys/types.h>
 
 int main()
 {
     DIR *dp = NULL;
-    dp = opendir("./data");
-    if (dp == NULL)
+    struct dirent *ptr = NULL;
+
+    dp = opendir("./Data");
+
+    if(dp == NULL)
     {
-        printf("unable to open dir %s", strerror(errno));
+        printf("%s\n",strerror(errno));
         return -1;
     }
 
-    struct dirent *ptr = NULL;
-    ptr = readdir(dp);
-    while (ptr != NULL)
+    while(ptr = readdir(dp))
     {
-        printf("INode no %lu: \n", ptr->d_ino);
-        printf("file  name : %s \n", ptr->d_name);
-        int fd = open(ptr->d_name, O_RDONLY); //
-        ptr = readdir(dp);
+        // fd = open(ptr->d_name,O_RDONLY);
+        // iRet = read(fd, Arr, sizeof(Arr));
     }
 
     closedir(dp);
-
+    
     return 0;
 }

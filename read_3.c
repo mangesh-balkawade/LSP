@@ -1,38 +1,45 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
+#include<unistd.h>
+#include<stdio.h>
+#include<fcntl.h>
+#include<string.h>
+#include<errno.h>
+
 #define SIZE_BUFFER 100
 
 int main()
 {
-    int fd = open("lsp.txt", O_RDONLY);
-    char buffer[SIZE_BUFFER];
+    int fd = 0;
+    char Buffer[SIZE_BUFFER];
+    int iRet = 0;
 
-    // similar like array.fills
-    memset(buffer, '\0', SIZE_BUFFER); // filewith '\0'
+    memset(Buffer,'\0',SIZE_BUFFER);
 
-    if (fd < 0)
+    fd = open("Demo.txt",O_RDONLY);
+    
+    if(fd < 0)
     {
-        printf("unable to open the file\n");
-        printf("Reson for failure %s\n", strerror(errno));
+        printf("Unable to open the file\n");
+        printf("Reson : %s\n",strerror(errno));
+        return -1;
     }
 
-    printf("file open successfully fd %d \n", fd);
+    printf("File succesfully opened with fd : %d\n",fd);
 
-    int iRet = 0;
-    iRet = read(fd, buffer, 10);
-    printf("%d bytes get successfully read ", iRet);
-    printf("Data from file %s \n", buffer);
+    iRet = read(fd, Buffer, 10);       
 
-    memset(buffer, '\0', SIZE_BUFFER); // clear
+    printf("%d bytes gets succesfully read\n",iRet);
 
-    iRet = read(fd, buffer, 10);
-    printf("%d bytes get successfully read ", iRet);
-    printf("Data from file %s \n", buffer);
+    printf("Data from file  : %s\n",Buffer);
+
+    memset(Buffer,'\0',SIZE_BUFFER);    // IMP
+
+    iRet = read(fd, Buffer, 10);       
+
+    printf("%d bytes gets succesfully read\n",iRet);
+
+    printf("Data from file  : %s\n",Buffer);
+    
     close(fd);
-
+    
     return 0;
 }

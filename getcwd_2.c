@@ -1,14 +1,16 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <errno.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include<unistd.h>
 
 int main()
 {
-    char arr[50];
-    memset(arr, '\0', sizeof(arr));
-    getcwd(arr, sizeof(arr));
-    printf("current working directory %s", arr);
+    char Arr[50];
+    memset(Arr,'\0',sizeof(Arr));
+
+    getcwd(Arr,sizeof(Arr));
+
+    printf("Current Directory Name : %s\n",Arr);
+  
     return 0;
 }

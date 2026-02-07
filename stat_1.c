@@ -1,20 +1,24 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 int main()
 {
     struct stat sobj;
-    int iRet = stat("lsp.txt", &sobj);
-    if (iRet == 0)
+    int iRet = 0;
+
+    iRet = stat("Demo.txt",&sobj);
+
+    if(iRet == 0)
     {
-        printf("stat works");
+        printf("stat works succesfully\n");
     }
     else
     {
-        printf("stats not working");
+        printf("There is issue in stat\n");
         return -1;
     }
+
     return 0;
 }

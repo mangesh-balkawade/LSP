@@ -1,43 +1,44 @@
-#include <stdio.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include<fcntl.h>
+#include<unistd.h>
 
 int main()
 {
-    char path[100];
-    memset(path, '\0', sizeof(path));
-
+    char Path[100];
     int iRet = 0;
-    iRet = readlink("./test/lspl.txt", path, sizeof(path));
-    if (iRet == -1)
+    int fd = 0;
+    char Arr[20];
+
+    memset(Path,'\0',sizeof(Path));
+
+    iRet = readlink("./Test/LSPl.txt",Path,sizeof(Path));
+
+    if(iRet == -1)
     {
-        printf("error occured %s", strerror(errno));
+        printf("%s\n",strerror(errno));
+        return -1;
     }
-    else
+
+    Path[iRet] = '\0';
+    
+    printf("Data from readlink is : %s\n",Path);
+
+    fd = open(Path,O_RDONLY);
+    if(fd == -1)
     {
-        path[iRet] = '\0';
-        printf("path name %s ", path);
-
-        char buffer[20];
-        // memset(buffer, '\0', sizeof(buffer));
-
-        int fd = open(path, O_RDONLY);
-
-        if (fd > 0)
-        {
-            iRet = read(fd, buffer, sizeof(buffer));
-            buffer[iRet] = '\0';
-            printf("file open data \n%s", buffer);
-            close(fd);
-        }
-        else
-        {
-            printf("unable to open file");
-        }
+        printf("Unable to open file\n");
+        return -1;
     }
+
+    iRet = read(fd,Arr,10);
+
+    Arr[iRet] = '\0';
+
+    printf("Data from original file : %s\n",Arr);
+
+    close(fd);
 
     return 0;
 }

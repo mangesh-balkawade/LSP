@@ -1,0 +1,5 @@
+File gets succesfully created with fd : 3
+
+> output redirection
+< input redirection
+2> error redirection

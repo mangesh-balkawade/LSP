@@ -1,19 +1,19 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 int main()
 {
-    int fd = open("output.txt", O_RDWR);
-    int iRet = unlink("output.txt");
-    if (iRet == 0)
+    int iRet = 0;
+
+    iRet = unlink("output.txt");
+
+    if(iRet == 0)
     {
-        printf("deleted");
+        printf("Unlink is succesful\n");
     }
-    else
-    {
-        printf("unable to delete");
-    }
+
+
     return 0;
 }

@@ -1,36 +1,38 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <errno.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include<fcntl.h>
+#include<unistd.h>
 
 int main()
 {
-    int fd = open("./process.txt", O_RDONLY);
+    int iRet = 0;
+    int fd = 0;
+    char Arr[100];
 
-    if (fd == -1)
+    fd = open("./process.txt",O_RDONLY);
+    if(fd == -1)
     {
-        printf("unable to open file \n");
-    }
-
-    int iRet = rename("./process.txt", "./test/hello.txt");
-
-    if (iRet == 0)
-    {
-        printf("file renamed");
-    }
-    else
-    {
-        printf("error in file %s", strerror(errno));
+        printf("Unable to open file\n");
         return -1;
     }
 
-    char arr[100];
-    iRet = read(fd, arr, 100);
+    iRet = rename("./process.txt","./Test/Hello.txt");
 
-    if (iRet != 0)
+    if(iRet == 0)
     {
-        printf("Data Received %s", arr);
+        printf("Rename succesful\n");
+    }
+    else
+    {
+        printf("%s\n",strerror(errno));
+        return -1;
+    }
+
+    iRet = read(fd,Arr,50);
+    if(iRet != 0)
+    {
+        printf("Data from file is : %s\n",Arr);
     }
 
     close(fd);

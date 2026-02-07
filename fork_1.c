@@ -1,10 +1,13 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
+#include<stdio.h>
+#include<unistd.h>
+
 int main()
 {
     pid_t pid = 0;
+
     pid = fork();
-    printf("PID%d PPID %d returnf%d\n", getpid(), getppid(), pid);
+
+    printf("%d\n",pid);
+
     return 0;
 }

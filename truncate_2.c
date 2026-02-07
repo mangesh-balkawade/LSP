@@ -1,16 +1,20 @@
-#include <stdio.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<unistd.h>
+
 int main()
 {
-    char fileName[] = "lsp.txt";
-    int iRet = truncate(fileName, 30);
-    if (iRet == 0)
+    int iRet = 0;
+
+    iRet = truncate("Demo.txt",30);
+
+    if(iRet == 0)
     {
-        printf("Trncate Done");
+        printf("Truncate is succesful\n");
     }
     else
     {
-        printf("Unable to truncate");
+        printf("There is issue in truncate\n");
     }
+    
     return 0;
 }

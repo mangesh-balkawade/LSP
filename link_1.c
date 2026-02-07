@@ -1,18 +1,19 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 int main()
 {
-    int iRet = link("demo.txt", "demox.txt");
-    if (iRet == 0)
+    int iRet = 0;
+
+    iRet = link("Demo.txt", "DemoX.txt");
+
+    if(iRet == 0)
     {
-        printf("link created");
+        printf("link is succesful\n");
     }
-    else
-    {
-        printf("unable to create link");
-    }
+
+
     return 0;
 }

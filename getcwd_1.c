@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <errno.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include<unistd.h>
 
 int main()
 {
-    printf("current directory name \n %s \n ", getcwd()); // errror
+    printf("Current Directory Name : %s\n",getcwd());   // Error
+  
     return 0;
 }

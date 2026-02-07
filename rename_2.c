@@ -1,20 +1,22 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <errno.h>
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
 
 int main()
 {
-    char arr[] = "./demo.tx";
-    int iRet = rename(arr, "./december.txt");
-    if (iRet == 0)
+    int iRet = 0;
+
+    iRet = rename("./Demo.txt","./December.txt");
+
+    if(iRet == 0)
     {
-        printf("file renamed");
+        printf("Rename succesful\n");
     }
     else
     {
-        printf("error in file %s", strerror(errno));
+        printf("%s\n",strerror(errno));
         return -1;
     }
+
     return 0;
 }

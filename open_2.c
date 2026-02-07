@@ -1,17 +1,19 @@
-#include <stdio.h>
-#include <fcntl.h>
+#include<fcntl.h>
+#include<stdio.h>
 
 int main()
 {
+    int fd = 0;
 
-    int fd = open("second.c", O_RDWR);
-    if (fd == -1)
+    fd = open("Second.c",O_RDWR);
+
+    if(fd == -1)
     {
         printf("Unable to open file\n");
     }
     else
     {
-        printf("File open successfuly with fd \n %d\n", fd);
+        printf("File gets succesfully opened with fd : %d\n",fd);
     }
 
     return 0;

@@ -1,18 +1,19 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 int main()
 {
-    int iRet = unlink("demo.txt");
-    if (iRet == 0)
+    int iRet = 0;
+
+    iRet = unlink("Demo.txt");
+
+    if(iRet == 0)
     {
-        printf("deleted");
+        printf("Unlink is succesful\n");
     }
-    else
-    {
-        printf("unable to delete");
-    }
+
+
     return 0;
 }

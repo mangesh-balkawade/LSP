@@ -1,8 +1,10 @@
-#include <stdio.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<unistd.h>
+
 int main()
 {
-    int iPid = getppid();
-    printf("PID of parent process is %d\n", iPid);
+    printf("PID of current process is : %d\n",getpid());
+    printf("PID of parent process is : %d\n",getppid());
+
     return 0;
 }

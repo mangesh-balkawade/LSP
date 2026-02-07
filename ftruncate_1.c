@@ -1,20 +1,24 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
+
 int main()
 {
-    char fileName[] = "lsp.txt";
+    int iRet = 0;
     int fd = 0;
-    fd = open(fileName, O_RDONLY);
 
-    int iRet = ftruncate(fd, 5);
-    if (iRet == 0)
+    fd = open("Demo.txt",O_RDONLY);
+
+    iRet = ftruncate(fd,5);
+
+    if(iRet == 0)
     {
-        printf("Trncate Done");
+        printf("Truncate is succesful\n");
     }
     else
     {
-        printf("Unable to truncate");
+        printf("There is issue in truncate\n");
     }
+    
     return 0;
 }

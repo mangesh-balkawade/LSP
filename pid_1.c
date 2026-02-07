@@ -1,8 +1,9 @@
-#include <stdio.h>
-#include <unistd.h>
+#include<stdio.h>
+#include<unistd.h>
+
 int main()
 {
-    int iPid = getpid();
-    printf("PID ofcurrent process is %d\n", iPid);
+    printf("PID of current process is : %d\n",getpid());
+
     return 0;
 }

@@ -1,23 +1,19 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<fcntl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 int main()
 {
     struct stat sobj;
-    int iRet = stat("lsp.txt", &sobj);
-    if (iRet == 0)
-    {
-        printf("inode no %lu \n", sobj.st_ino);
-        printf("hardlink count %lu \n", sobj.st_nlink);
-        printf("total size %lu \n", sobj.st_size);
-        printf("block size %lu \n", sobj.st_blksize);
-    }
-    else
-    {
-        printf("stats not working");
-        return -1;
-    }
+    int iRet = 0;
+
+    iRet = stat("Demo.txt",&sobj);
+
+    printf("Inode number : %ld\n",sobj.st_ino);
+    printf("Hardlink count : %ld\n",sobj.st_nlink);
+    printf("Total size : %ld\n",sobj.st_size);
+    printf("Block size : %ld\n",sobj.st_blksize);
+
     return 0;
 }

@@ -1,26 +1,27 @@
-#include <stdio.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+#include<fcntl.h>
+#include<unistd.h>
 
 int main()
 {
-    char path[100];
-    memset(path, '\0', sizeof(path));
-
+    char Path[100];
     int iRet = 0;
-    iRet = readlink("./test/lspl.txt", path, sizeof(path));
-    if (iRet == -1)
+
+    memset(Path,'\0',sizeof(Path));
+
+    iRet = readlink("./Test/LSPl.txt",Path,sizeof(Path));
+
+    if(iRet == -1)
     {
-        printf("error occured %s", strerror(errno));
+        printf("%s\n",strerror(errno));
+        return -1;
     }
-    else
-    {
-        path[iRet] = '\0';
-        printf("path name %s ", path);
-    }
+
+    Path[iRet] = '\0';
+    
+    printf("Data from readlink is : %s\n",Path);
 
     return 0;
 }
